@@ -1,8 +1,9 @@
 const std = @import("std");
 const k01 = @import("k01/k01.zig");
+const k02 = @import("k02/k02.zig");
 const utility = @import("utility/utility.zig");
 
-fn showSelections(chapter: i32) anyerror!void {
+fn showSelections(chapter: usize) anyerror!void {
     const stdout = std.io.getStdOut();
 
     if (chapter < 10) {
@@ -10,10 +11,9 @@ fn showSelections(chapter: i32) anyerror!void {
             try stdout.writer().print("\t{}) K0{}_{}\n", .{ n, chapter, n });
         }
         if (chapter == 9) {
-            try stdout.writer().print("\t5) K0{}_5\n", .{ chapter });
+            try stdout.writer().print("\t5) K0{}_5\n", .{chapter});
         }
-    }
-    else {
+    } else {
         for ([_]u8{ 1, 2, 3, 4 }) |n| {
             try stdout.writer().print("\t{}) K{}_{}\n", .{ n, chapter, n });
         }
@@ -23,7 +23,7 @@ fn showSelections(chapter: i32) anyerror!void {
 pub fn main() anyerror!void {
     const stdout = std.io.getStdOut();
     const stdin = std.io.getStdIn();
-    const executables = [_]fn(i32) void{ k01.k01 };
+    const executables = [_]fn (usize) anyerror!void{ k01.k01, k02.k02 };
 
     try stdout.writeAll(
         \\実行したいプログラムを選択してください。
@@ -32,14 +32,23 @@ pub fn main() anyerror!void {
 
     for (executables) |func, index| {
         if (index < 10) {
-            try stdout.writer().print("{}) K0{}\t\t", .{index + 1, index + 1});
+            try stdout.writer().print("{}) K0{}\t\t", .{ index + 1, index + 1 });
         }
     }
     try stdout.writer().print("\n", .{});
 
     var buffer: [100]u8 = undefined;
-    const input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
-    // Can't even get this to work.
-    const chapter = (try std.fmt.parseInt(i32, input, 10));
-    showSelections(chapter);
+    var input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
+
+    if (std.fmt.parseUnsigned(usize, input, 10)) |choice| {
+        try showSelections(choice);
+        input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
+        if (std.fmt.parseUnsigned(usize, input, 10)) |choice2| {
+            try executables[@as(usize, choice - 1)](choice2);
+        } else |err| {
+            std.log.err("Error: {}", .{.err});
+        }
+    } else |err| {
+        std.log.err("Error: {}", .{err});
+    }
 }
