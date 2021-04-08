@@ -1,6 +1,7 @@
 const std = @import("std");
 const k01 = @import("k01/k01.zig");
 const k02 = @import("k02/k02.zig");
+const k03 = @import("k03/k03.zig");
 const utility = @import("utility/utility.zig");
 
 fn showSelections(chapter: usize) anyerror!void {
@@ -23,7 +24,7 @@ fn showSelections(chapter: usize) anyerror!void {
 pub fn main() anyerror!void {
     const stdout = std.io.getStdOut();
     const stdin = std.io.getStdIn();
-    const executables = [_]fn (usize) anyerror!void{ k01.k01, k02.k02 };
+    const executables = [_]fn (usize) anyerror!void{ k01.k01, k02.k02, k03.k03 };
 
     try stdout.writeAll(
         \\実行したいプログラムを選択してください。

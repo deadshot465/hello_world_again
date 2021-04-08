@@ -13,13 +13,13 @@ fn question_1() anyerror!void {
 
 fn question_2() anyerror!void {
     const stdin = std.io.getStdIn();
-    const stdout = std.io.getStdOut();
-    try stdout.writer().print("一つ目の整数は？", .{});
+
+    try utility.prompt("一つ目の整数は？");
     var buffer: [100]u8 = undefined;
     var input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const number1 = try std.fmt.parseInt(i32, input, 10);
 
-    try stdout.writer().print("二つ目の整数は？", .{});
+    try utility.prompt("二つ目の整数は？");
     input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const number2 = try std.fmt.parseInt(i32, input, 10);
 
@@ -28,19 +28,19 @@ fn question_2() anyerror!void {
 
 fn question_3() anyerror!void {
     const stdin = std.io.getStdIn();
-    const stdout = std.io.getStdOut();
-    try stdout.writer().print("一つ目の商品の値段は？", .{});
+
+    try utility.prompt("一つ目の商品の値段は？");
     var buffer: [100]u8 = undefined;
     var input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const priceA = try std.fmt.parseInt(i32, input, 10);
-    try stdout.writer().print("個数は？", .{});
+    try utility.prompt("個数は？");
     input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const amountA = try std.fmt.parseInt(i32, input, 10);
 
-    try stdout.writer().print("二つ目の商品の値段は？", .{});
+    try utility.prompt("二つ目の商品の値段は？");
     input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const priceB = try std.fmt.parseInt(i32, input, 10);
-    try stdout.writer().print("個数は？", .{});
+    try utility.prompt("個数は？");
     input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const amountB = try std.fmt.parseInt(i32, input, 10);
 
@@ -56,9 +56,8 @@ fn question_4() anyerror!void {
     std.log.info("HP：{}", .{golem_instance.hp});
 
     const stdin = std.io.getStdIn();
-    const stdout = std.io.getStdOut();
 
-    try stdout.writer().print("今回の攻撃の値を入力してください＞", .{});
+    try utility.prompt("今回の攻撃の値を入力してください＞");
     var buffer: [100]u8 = undefined;
     var input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     var damage = try std.fmt.parseInt(i32, input, 10);
