@@ -1,0 +1,23 @@
+{
+  "name": "HelloWorldAgain",
+  "description": "Write me!",
+  "version": "0.1",
+  "perl": "6.*",
+  "authors": [
+    "Write me!"
+  ],
+  "auth": "Tetsuki Syu",
+  "depends": [],
+  "build-depends": [],
+  "test-depends": [],
+  "provides": {
+    "Golem": "lib/Golem.pm6",
+    "K01": "lib/K01.pm6",
+    "K02": "lib/K02.pm6",
+    "K03": "lib/K03.pm6",
+    "K04": "lib/K04.pm6"
+  },
+  "resources": [],
+  "license": "Write me!",
+  "source-url": "Write me!"
+}
