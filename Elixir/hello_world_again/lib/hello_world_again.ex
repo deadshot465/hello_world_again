@@ -20,7 +20,8 @@ defmodule HelloWorldAgain do
   @executables [
     &K01.execute/1,
     &K02.execute/1,
-    &K03.execute/1
+    &K03.execute/1,
+    &K04.execute/1
   ]
 
   @doc """

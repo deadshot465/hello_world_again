@@ -23,7 +23,7 @@ fn question_2() anyerror!void {
     input = (try utility.readNextLine(stdin.reader(), &buffer)).?;
     const number2 = try std.fmt.parseInt(i32, input, 10);
 
-    std.log.info("{}÷{}={}", .{ number1, number2, @divTrunc(number1, number2) });
+    std.log.info("{}÷{}={}...{}", .{ number1, number2, @divTrunc(number1, number2), @rem(number1, number2) });
 }
 
 fn question_3() anyerror!void {
@@ -52,7 +52,7 @@ fn question_3() anyerror!void {
 fn question_4() anyerror!void {
     var golem_instance = golem.Golem{ .hp = 300, .defense = 80, .attack = 50 };
 
-    std.log.info("ゴーレム　（HP：{}　防御力：{}", .{ golem_instance.hp, golem_instance.defense });
+    std.log.info("ゴーレム　（HP：{}　防御力：{}）", .{ golem_instance.hp, golem_instance.defense });
     std.log.info("HP：{}", .{golem_instance.hp});
 
     const stdin = std.io.getStdIn();
@@ -73,7 +73,7 @@ fn question_4() anyerror!void {
     std.log.info("残りのHPは{}です。", .{golem_instance.hp});
 }
 
-pub fn k02(num: usize) anyerror!void {
+pub fn execute(num: usize) anyerror!void {
     switch (num) {
         1 => try question_1(),
         2 => try question_2(),

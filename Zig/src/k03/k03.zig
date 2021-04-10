@@ -100,7 +100,7 @@ fn question_4() anyerror!void {
     }
 }
 
-pub fn k03(num: usize) anyerror!void {
+pub fn execute(num: usize) anyerror!void {
     switch (num) {
         1 => try question_1(),
         2 => try question_2(),
