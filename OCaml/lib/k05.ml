@@ -55,7 +55,7 @@ module K05 : Question = struct
         | (x, y) when x <> 0 && y = 0 ->
           print_endline "あなたはゴーレムに負けました！ゲームオーバー！"
         | (x, y) ->
-          Printf.printf "残りHP：%d\n" x;
+          Printf.printf "ゴーレム残りHP：%d\n" x;
           let damage = input_damage 0 in
           Printf.printf "基礎攻撃力は%dです。\n" damage;
           let damage = if damage - golem'.defense <= 0 then 0 else damage - golem'.defense in

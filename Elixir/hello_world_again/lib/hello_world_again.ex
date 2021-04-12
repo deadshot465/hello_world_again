@@ -21,7 +21,8 @@ defmodule HelloWorldAgain do
     &K01.execute/1,
     &K02.execute/1,
     &K03.execute/1,
-    &K04.execute/1
+    &K04.execute/1,
+    &K05.execute/1
   ]
 
   @doc """
