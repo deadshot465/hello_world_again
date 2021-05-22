@@ -1,0 +1,7 @@
+(library
+ (name lib)
+ (flags
+  (-w -40 -w +26))
+ (public_name hello-world)
+ (libraries pastel.lib)
+ (modules_without_implementation question))
