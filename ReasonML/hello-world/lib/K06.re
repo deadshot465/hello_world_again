@@ -45,7 +45,7 @@ module K06: Question = {
         let rec make = amount_of_stars => amount_of_spaces => acc => {
             switch (amount_of_stars) {
                 | 0 => acc
-                | _ => make(amount_of_stars - 1, amount_of_spaces + 1, [String.make(amount_of_stars, '*') ++ String.make(amount_of_spaces, ' '), ...acc]);
+                | _ => make(amount_of_stars - 1, amount_of_spaces + 1, [String.make(amount_of_spaces, ' ') ++ String.make(amount_of_stars, '*'), ...acc]);
             }
         };
         make(levels, 0, []);
