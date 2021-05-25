@@ -4,5 +4,3 @@ module type Question = sig
   val question_3 : unit -> unit
   val question_4 : unit -> unit
 end
-
-module K01 : Question

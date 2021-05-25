@@ -5,10 +5,11 @@ module K02 = Executable(Lib.K02.K02)
 module K03 = Executable(Lib.K03.K03)
 module K04 = Executable(Lib.K04.K04)
 module K05 = Executable(Lib.K05.K05)
+module K06 = Executable(Lib.K06.K06)
 
 let executables = [
   K01.execute; K02.execute; K03.execute; K04.execute;
-  K05.execute
+  K05.execute; K06.execute
 ]
 
 let show_selections chapter =
