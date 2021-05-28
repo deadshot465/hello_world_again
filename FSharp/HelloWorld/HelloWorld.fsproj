@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Lib\Question.fs" />
+        <Compile Include="Lib\K01.fs" />
+        <Compile Include="Lib\K02.fs" />
+        <Compile Include="Lib\K03.fs" />
+        <Compile Include="Lib\K04.fs" />
+        <Compile Include="Lib\K05.fs" />
+        <Compile Include="Lib\K06.fs" />
+        <Compile Include="Lib\Executable.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+</Project>
