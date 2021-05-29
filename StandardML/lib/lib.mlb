@@ -1,0 +1,17 @@
+local
+  $(SML_LIB)/basis/basis.mlb
+  $(SML_LIB)/basis/mlton.mlb
+  question.sml
+  k01.sml
+  k02.sml
+  k03.sml
+  k04.sml
+  executable.sml
+in
+  signature Question
+  structure K01
+  structure K02
+  structure K03
+  structure K04
+  functor Executable
+end
