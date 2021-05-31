@@ -6,6 +6,7 @@ local
   k02.sml
   k03.sml
   k04.sml
+  k05.sml
   executable.sml
 in
   signature Question
@@ -13,5 +14,6 @@ in
   structure K02
   structure K03
   structure K04
+  structure K05
   functor Executable
 end
