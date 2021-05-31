@@ -3,9 +3,10 @@ structure K02E = Executable(K02)
 structure K03E = Executable(K03)
 structure K04E = Executable(K04)
 structure K05E = Executable(K05)
+structure K06E = Executable(K06)
 
 val executables = Array.fromList [K01E.execute, K02E.execute,
-  K03E.execute, K04E.execute, K05E.execute]
+  K03E.execute, K04E.execute, K05E.execute, K06E.execute]
 
 fun showSelections chapter = (
   let
