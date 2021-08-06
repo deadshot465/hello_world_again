@@ -14,7 +14,7 @@ class Question a where
 execute :: ∀ a. Question a => a -> Int -> Effect Unit
 execute k n = case n of
   1 -> question1 k
-  2 -> question1 k
-  3 -> question1 k
-  4 -> question1 k
+  2 -> question2 k
+  3 -> question3 k
+  4 -> question4 k
   _ -> log ""

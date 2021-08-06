@@ -17,3 +17,7 @@ export const _closeAndExit = () => {
     process.stdin.resume();
     process.stdin.on('data', process.exit.bind(process, 0));
 }
+
+export const _writeToStdout = (buffer: string) => () => {
+    return process.stdout.write(buffer);
+}
