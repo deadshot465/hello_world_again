@@ -2,12 +2,14 @@
 
 -export([question_1/0, question_2/0, question_3/0, question_4/0]).
 
+-spec question_1() -> 'ok'.
 question_1() ->
     {ok, [Age]} = io:fread("年齢を入力してください。＞", "~d"),
     io:format(if Age < 20 -> "未成年なので購入できません。~n";
                  true -> ""
               end).
 
+-spec question_2() -> 'ok'.
 question_2() ->
     {ok, [Height]} = io:fread("身長を入力してください。＞", "~f"),
     HeightInMeter = Height * 0.01,
@@ -20,6 +22,7 @@ question_2() ->
                 _ -> "普通ですね。~n"
     end).
 
+-spec question_3() -> 'ok'.
 question_3() ->
     Number = rand:uniform(100) - 1,
     io:format("０から９９の範囲の数値が決定されました。~n"),
@@ -29,6 +32,7 @@ question_3() ->
                  true -> "不正解です。~n"
     end).
 
+-spec question_4() -> 'ok'.
 question_4() ->
     Number = rand:uniform(100) - 1,
     io:format("０から９９の範囲の数値が決定されました。~n"),
