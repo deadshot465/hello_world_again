@@ -1,6 +1,6 @@
 -module(k04).
 
--export([question_1/0, question_2/0, question_3/0, question_4/0]).
+-export([execute/1]).
 
 -spec question_1() -> 'ok'.
 question_1() ->
@@ -44,3 +44,10 @@ question_4() ->
         end);
         true -> io:format("")
     end.
+
+-spec execute(_) -> 'ok'.
+execute(1) -> question_1();
+execute(2) -> question_2();
+execute(3) -> question_3();
+execute(4) -> question_4();
+execute(_) -> 'ok'.

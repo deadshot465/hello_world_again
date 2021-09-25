@@ -1,6 +1,6 @@
 -module(k05).
 
--export([question_1/0, question_2/0, question_3/0, question_4/0]).
+-export([execute/1]).
 
 -spec question_1() -> 'ok'.
 question_1() ->
@@ -82,3 +82,10 @@ question_4_loop(Golem, PlayerHp) ->
                 question_4_loop({golem, {hp, RemainingHp}, {defense, Defense}, {attack, Attack}}, Y)
             end
     end.
+
+-spec execute(_) -> 'ok'.
+execute(1) -> question_1();
+execute(2) -> question_2();
+execute(3) -> question_3();
+execute(4) -> question_4();
+execute(_) -> 'ok'.

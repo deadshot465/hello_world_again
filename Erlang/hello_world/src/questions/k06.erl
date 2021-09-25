@@ -1,6 +1,6 @@
 -module(k06).
 
--export([question_1/0, question_2/0, question_3/0, question_4/0]).
+-export([execute/1]).
 
 -spec question_1() -> 'ok'.
 question_1() ->
@@ -101,11 +101,21 @@ question_4() ->
     Output = lists:flatten(lists:join("\n", Text)),
     io:format("~s~n", [Output]).
 
+-spec print_one_to_ten(integer(), [integer()]) -> [integer()].
 print_one_to_ten(0, Arr) -> Arr;
 print_one_to_ten(Num, Arr) -> print_one_to_ten(Num - 1, [Num|Arr]).
 
+-spec multiply(integer(), integer(), [integer()]) -> [integer()].
 multiply(_, 0, Arr) -> Arr;
 multiply(I, J, Arr) -> multiply(I, J - 1, [I * J|Arr]).
 
+-spec calculate(integer(), [[integer()]]) -> [[integer()]].
 calculate(0, Arr) -> Arr;
 calculate(I, Arr) -> calculate(I - 1, [multiply(I, 9, [])|Arr]).
+
+-spec execute(_) -> 'ok'.
+execute(1) -> question_1();
+execute(2) -> question_2();
+execute(3) -> question_3();
+execute(4) -> question_4();
+execute(_) -> 'ok'.
