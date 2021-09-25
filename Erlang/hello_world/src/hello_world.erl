@@ -3,4 +3,4 @@
 -export([main/0]).
 
 main() ->
-    k04:question_4().
+    k06:question_4().
