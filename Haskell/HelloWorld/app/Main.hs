@@ -55,7 +55,7 @@ showSelections chapter = traverse_ (\x -> putStrLn $ "\t" <> show x <> ") " <> (
     biggerThanTen = chapter > 10
 
 showAssignments :: IO ()
-showAssignments = traverse_ (\x -> putStrLn (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) [1, 2, 3, 4, 5, 6, 7, 8cd .]
+showAssignments = traverse_ (\x -> putStrLn (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) [1, 2, 3, 4, 5, 6, 7, 8]
   where
     biggerThanTen = (> 10)
 
