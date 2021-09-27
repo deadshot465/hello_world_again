@@ -12,6 +12,8 @@ import K03 (K03(..))
 import K04 (K04(..))
 import K05 (K05(..))
 import K06 (K06(..))
+import K07 (K07(..))
+import K08 (K08(..))
 
 k01 :: K01
 k01 = K01
@@ -31,6 +33,11 @@ k05 = K05
 k06 :: K06
 k06 = K06
 
+k07 :: K07
+k07 = K07
+
+k08 = K08
+
 execute' :: (Eq a, Eq a1, Num a, Num a1) => a -> a1 -> IO ()
 execute' 1 = execute k01
 execute' 2 = execute k02
@@ -38,6 +45,8 @@ execute' 3 = execute k03
 execute' 4 = execute k04
 execute' 5 = execute k05
 execute' 6 = execute k06
+execute' 7 = execute k07
+execute' 8 = execute k08
 execute' _ = \_ -> putStrLn "Error"
 
 showSelections :: (Show a, Ord a, Num a) => a -> IO ()
@@ -46,7 +55,7 @@ showSelections chapter = traverse_ (\x -> putStrLn $ "\t" <> show x <> ") " <> (
     biggerThanTen = chapter > 10
 
 showAssignments :: IO ()
-showAssignments = traverse_ (\x -> putStrLn (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) [1, 2, 3, 4, 5, 6]
+showAssignments = traverse_ (\x -> putStrLn (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) [1, 2, 3, 4, 5, 6, 7, 8cd .]
   where
     biggerThanTen = (> 10)
 

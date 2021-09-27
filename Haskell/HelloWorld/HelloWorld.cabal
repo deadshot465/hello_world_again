@@ -31,8 +31,12 @@ library
       K04
       K05
       K06
+      K07
+      K08
+      K08_Adventure
       Lib
       Question
+      Utility
   other-modules:
       Paths_HelloWorld
   hs-source-dirs:
