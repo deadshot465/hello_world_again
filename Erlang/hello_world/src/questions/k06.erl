@@ -76,10 +76,10 @@ count_combinations(Amount) -> count_hundreds(Amount div 100, Amount, []).
 question_3() ->
     Combinations = count_combinations(370),
     CombinationText = lists:map(fun({X, Y, Z}) ->
-        ("10 has " ++ integer_to_list(Z) ++ " coins, 50 has " ++ integer_to_list(Y) ++ " coins, 100 has " ++ integer_to_list(X) ++ " coins.\n") end,
+        ("10円の硬貨" ++ integer_to_list(Z) ++ "枚 50円の硬貨" ++ integer_to_list(Y) ++ "枚 100円の硬貨" ++ integer_to_list(X) ++ "枚\n") end,
         Combinations),
     Output = lists:flatten(lists:join("\n", CombinationText)),
-    io:format("~s~n~n", [Output]),
+    io:format("~ts~n~n", [Output]),
     Count = length(Combinations),
     io:format("以上~B通りを発見しました。~n", [Count]).
 

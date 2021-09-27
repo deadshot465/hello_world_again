@@ -3,7 +3,7 @@
 -export([main/0]).
 
 main() ->
-    Modules = [k01, k02, k03, k04, k05, k06],
+    Modules = [k01, k02, k03, k04, k05, k06, k07, k08],
     Ordinals = lists:seq(1, length(Modules)),
     Zipped = lists:zip(Ordinals, Modules),
     io:format("実行したいプログラムを選択してください。~n"),
