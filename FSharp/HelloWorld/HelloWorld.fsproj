@@ -13,6 +13,9 @@
         <Compile Include="Lib\K04.fs" />
         <Compile Include="Lib\K05.fs" />
         <Compile Include="Lib\K06.fs" />
+        <Compile Include="Lib\K07.fs" />
+        <Compile Include="Lib\K08Adventure.fs" />
+        <Compile Include="Lib\K08.fs" />
         <Compile Include="Lib\Executable.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

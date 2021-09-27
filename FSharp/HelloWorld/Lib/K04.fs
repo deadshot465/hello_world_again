@@ -3,8 +3,8 @@ namespace HelloWorld.Lib
 open System
 
 type K04() =
-    interface Question with
-        member this.question_1() =
+    interface IQuestion with
+        member this.Question1() =
             printf "年齢を入力してください。＞"
             let age = Console.ReadLine() |> Int32.Parse
             if age < 3 || age >= 70 then
@@ -12,14 +12,14 @@ type K04() =
             else
                 printfn "通常料金です。"
             
-        member this.question_2() =
+        member this.Question2() =
             printf "性別を選択してください。（０：男性　１：女性）＞"
             match (Console.ReadLine() |> Int32.Parse) with
             | 0 -> printfn "あら、格好良いですね。"
             | 1 -> printfn "あら、モデルさんみたいですね。"
             | _ -> printfn "そんな選択肢はありません。"
             
-        member this.question_3() =
+        member this.Question3() =
             printf "年齢を入力してください。＞"
             let age = Console.ReadLine() |> Int32.Parse
             match age with
@@ -28,7 +28,7 @@ type K04() =
             | x when x >= 60 && x < 70 -> printfn "シニア割引で一割引きです。"
             | _ -> printfn "通常料金です。"
             
-        member this.question_4() =
+        member this.Question4() =
             let rng = Random()
             printfn "＊＊＊おみくじプログラム＊＊＊"
             printf "おみくじを引きますか　（はい：１　いいえ：０）＞"

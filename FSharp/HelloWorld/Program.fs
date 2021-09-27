@@ -5,9 +5,10 @@ open HelloWorld.Lib
 
 module HelloWorld =
     let executables = [|Executable(K01()); Executable(K02()); Executable(K03())
-                        Executable(K04()); Executable(K05()); Executable(K06())|]
+                        Executable(K04()); Executable(K05()); Executable(K06())
+                        Executable(K07()); Executable(K08())|]
     
-    let show_selections chapter =
+    let showSelections chapter =
         if chapter < 10 then
             [1; 2; 3; 4] |> List.iter (fun x -> printfn $"\t{x}) K0{chapter}_{x}")
         else
@@ -21,7 +22,7 @@ module HelloWorld =
             else printf $"{i + 1}) K{i + 1}\t\t")
         printfn ""
         let choice = Console.ReadLine() |> Int32.Parse
-        show_selections choice
-        let choice_2 = Console.ReadLine() |> Int32.Parse
-        executables.[choice - 1].execute choice_2
+        showSelections choice
+        let choice2 = Console.ReadLine() |> Int32.Parse
+        executables.[choice - 1].Execute choice2
         0 // return an integer exit code
