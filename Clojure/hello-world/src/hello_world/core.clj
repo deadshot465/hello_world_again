@@ -5,7 +5,9 @@
             [hello-world.assignments.question-3 :refer :all]
             [hello-world.assignments.question-4 :refer :all]
             [hello-world.assignments.question-5 :refer :all]
-            [hello-world.assignments.question-6 :refer :all])
+            [hello-world.assignments.question-6 :refer :all]
+            [hello-world.assignments.question-7 :refer :all]
+            [hello-world.assignments.question-8 :refer :all])
   (:gen-class))
 
 (defn show-selections [chapter]
@@ -14,7 +16,8 @@
        (println)))
 
 (def executables (list (->Executable (->K01)) (->Executable (->K02)) (->Executable (->K03))
-                       (->Executable (->K04)) (->Executable (->K05)) (->Executable (->K06))))
+                       (->Executable (->K04)) (->Executable (->K05)) (->Executable (->K06))
+                       (->Executable (->K07)) (->Executable (->K08))))
 
 (defn -main [& _]
   (println "実行したいプログラムを選択してください。")
