@@ -42,7 +42,7 @@ module K08_Adventure = struct
 
   let engage_battle player_hp =
     let golem_level = Random.int 10 in
-    let golem = { hp = golem_level * 50 + 100; attack = golem_level * 10 + 40; defense = golem_level * 10 + 30 } in
+    let golem = { hp = golem_level * 50 + 100; attack = golem_level * 10 + 30; defense = golem_level * 10 + 40 } in
     Printf.printf "ゴーレムLv.%dが現れた！\n" (golem_level + 1);
     battle_loop golem_level golem player_hp
 

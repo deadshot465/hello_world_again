@@ -14,6 +14,8 @@ import K03 (K03(..))
 import K04 (K04(..))
 import K05 (K05(..))
 import K06 (K06(..))
+import K07 (K07(..))
+import K08 (K08(..))
 import Question (execute) as Question
 import Readline (getNumber)
 
@@ -35,6 +37,12 @@ k05 = K05
 k06 :: K06
 k06 = K06
 
+k07 :: K07
+k07 = K07
+
+k08 :: K08
+k08 = K08
+
 execute :: Int -> Int -> Effect Unit
 execute 1 = Question.execute k01
 execute 2 = Question.execute k02
@@ -42,6 +50,8 @@ execute 3 = Question.execute k03
 execute 4 = Question.execute k04
 execute 5 = Question.execute k05
 execute 6 = Question.execute k06
+execute 7 = Question.execute k07
+execute 8 = Question.execute k08
 execute _ = const $ log "Error"
 
 showSelections :: ∀ f. Applicative f => MonadEffect f => Int -> f (Array Unit)
@@ -50,7 +60,7 @@ showSelections chapter = traverse (\x -> log $ "\t" <> show x <> ") " <> (if big
     biggerThanTen = chapter > 10
 
 assignments :: Array Int
-assignments = [1, 2, 3, 4, 5, 6]
+assignments = [1, 2, 3, 4, 5, 6, 7, 8]
 
 showAssignments :: ∀ f. Applicative f => MonadEffect f => f (Array Unit)
 showAssignments = traverse (\x -> log (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) assignments

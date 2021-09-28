@@ -64,7 +64,7 @@ battleLoop golemLevel golem@Golem{ hp, defense, attack } playerHp = do
 engageBattle :: Int -> IO ProgressResult
 engageBattle playerHp = do
   golemLevel <- getRandomInt 10
-  let golem = Golem { hp = golemLevel * 50 + 100, attack = golemLevel * 10 + 40, defense = golemLevel * 10 + 30 }
+  let golem = Golem { hp = golemLevel * 50 + 100, attack = golemLevel * 10 + 30, defense = golemLevel * 10 + 40 }
   putStrLn $ "ゴーレムLv." <> show golemLevel <> "が現れた！"
   battleLoop golemLevel golem playerHp
 
