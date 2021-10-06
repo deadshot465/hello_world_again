@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,6 +17,7 @@
         <Compile Include="Lib\K08Adventure.fs" />
         <Compile Include="Lib\K08.fs" />
         <Compile Include="Lib\Executable.fs" />
+        <Compile Include="Lib\Extra\Rpn.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
