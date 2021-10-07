@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Extra.Rpn
       K01
       K02
       K03
@@ -42,7 +43,8 @@ library
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      HUnit >=1.6.2.0
+    , base >=4.7 && <5
     , containers >=0.6.2.1
     , random >=1.2.0
     , text >=1.2.4.1
@@ -56,7 +58,8 @@ executable HelloWorld-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      HelloWorld
+      HUnit >=1.6.2.0
+    , HelloWorld
     , base >=4.7 && <5
     , containers >=0.6.2.1
     , random >=1.2.0
@@ -72,7 +75,8 @@ test-suite HelloWorld-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      HelloWorld
+      HUnit >=1.6.2.0
+    , HelloWorld
     , base >=4.7 && <5
     , containers >=0.6.2.1
     , random >=1.2.0
