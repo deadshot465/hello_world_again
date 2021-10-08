@@ -10,6 +10,9 @@
     <ItemGroup>
         <Compile Include="UnitTest1.fs" />
         <Compile Include="Program.fs" />
+        <None Include="road.txt">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
