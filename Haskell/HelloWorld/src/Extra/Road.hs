@@ -70,8 +70,8 @@ optimalPath values =
         | otherwise = Route { destination = 0, path = [] } in
   reverse resolved
 
-run :: IO ()
+run :: IO [(Char, Int)]
 run = do
   rawString <- readFile file
   let values = flip groupValues [] $ parseMap rawString
-  print $ optimalPath values
+  pure $ optimalPath values

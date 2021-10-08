@@ -2,6 +2,17 @@ import Prelude
 
 import Test.HUnit (Test(TestCase, TestList, TestLabel), assertEqual, runTestTT)
 import Extra.Rpn (rpn)
+import qualified Extra.Road as Road
+
+expectedRoad :: [(Char, Int)]
+expectedRoad =
+      [ ('b',10)
+      ,('x',30)
+      ,('a',5)
+      ,('x',20)
+      ,('b',2)
+      ,('b',8)
+      ]
 
 test1 :: Test
 test1 = TestCase (assertEqual "Test Plus" (Right 5.0) $ rpn "2 3 +")
@@ -42,6 +53,11 @@ test12 = TestCase (assertEqual "Test Sum And Divide" (Right 10.0) $ rpn "10 10 1
 test13 :: Test
 test13 = TestCase (assertEqual "Test Product" (Right 1000.0) $ rpn "10 10 20 0.5 prod")
 
+test14 :: Test
+test14 = TestCase (do
+      result <- Road.run
+      assertEqual "Test Heathrow to London" expectedRoad result)
+
 main :: IO ()
 main = do
   let testList = TestList
@@ -58,6 +74,7 @@ main = do
         , TestLabel "Test Sum" test11
         , TestLabel "Test Sum And Divide" test12
         , TestLabel "Test Product" test13
+        , TestLabel "Test Heathrow to London" test14
         ]
   count <- runTestTT testList
   pure ()
