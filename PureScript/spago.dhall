@@ -14,6 +14,7 @@ to generate this file without the comments in this block.
 , dependencies =
   [ "aff"
   , "aff-promise"
+  , "arrays"
   , "console"
   , "effect"
   , "either"
@@ -22,6 +23,8 @@ to generate this file without the comments in this block.
   , "lists"
   , "math"
   , "maybe"
+  , "node-buffer"
+  , "node-fs-aff"
   , "numbers"
   , "prelude"
   , "psci-support"

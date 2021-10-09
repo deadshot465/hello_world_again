@@ -3,7 +3,10 @@ module Test.Main where
 import Prelude
 
 import Data.Either (Either(..))
+import Data.List (fromFoldable)
+import Data.Tuple (Tuple(..))
 import Effect (Effect)
+import Extra.Road as Road
 import Extra.Rpn (log10, rpn)
 import Math (log, sqrt)
 import Test.Unit (suite, test)
@@ -52,3 +55,17 @@ main = do
     suite "Test Product" do
       test "Test Product" do
         Assert.equal (Right 1000.0) (rpn "10 10 20 0.5 prod")
+    suite "Test Heathrow to London" do
+      test "Test Heathrow to London" do
+        result <- Road.run
+        Assert.equal (fromFoldable expectedRoad) result
+
+expectedRoad :: Array (Tuple Char Int)
+expectedRoad =
+  [ Tuple 'b' 10
+  , Tuple 'x' 30
+  , Tuple 'a' 5
+  , Tuple 'x' 20
+  , Tuple 'b' 2
+  , Tuple 'b' 8
+  ]

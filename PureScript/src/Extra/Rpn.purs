@@ -1,4 +1,4 @@
-module Extra.Rpn (log10, rpn) where
+module Extra.Rpn (log10, regexFlags, rpn) where
   
 import Prelude
 
@@ -39,7 +39,7 @@ readFloat = fromMaybe 0.0 <<< Number.fromString
 regexFlags :: RegexFlags
 regexFlags = RegexFlags
   { dotAll: false
-  , global: false
+  , global: true
   , ignoreCase: false
   , multiline: false
   , sticky: false
