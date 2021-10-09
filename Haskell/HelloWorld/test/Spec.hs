@@ -7,11 +7,11 @@ import qualified Extra.Road as Road
 expectedRoad :: [(Char, Int)]
 expectedRoad =
       [ ('b',10)
-      ,('x',30)
-      ,('a',5)
-      ,('x',20)
-      ,('b',2)
-      ,('b',8)
+      , ('x',30)
+      , ('a',5)
+      , ('x',20)
+      , ('b',2)
+      , ('b',8)
       ]
 
 test1 :: Test

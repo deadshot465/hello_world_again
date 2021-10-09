@@ -1,5 +1,10 @@
+open Extra.Road
 open Extra.Rpn
 open OUnit2
+
+let expected_road = [
+  ('b',10); ('x',30); ('a',5); ('x',20); ('b',2); ('b',8)
+]
 
 let test_plus _ = assert_equal 5.0 (Rpn.rpn "2.0 3.0 +")
 
@@ -27,6 +32,8 @@ let test_sum_and_divide _ = assert_equal 10.0 (Rpn.rpn "10 10 10 20 sum 5 /")
 
 let test_product _ = assert_equal 1000.0 (Rpn.rpn "10 10 20 0.5 prod")
 
+let test_heathrow_to_london _ = assert_equal expected_road Road.run
+
 let suite =
   "suite" >:::
   [ "test_plus" >:: test_plus;
@@ -41,7 +48,8 @@ let suite =
     "test_log10" >:: test_log10;
     "test_sum" >:: test_sum;
     "test_sum_and_divide" >:: test_sum_and_divide;
-    "test_product" >:: test_product
+    "test_product" >:: test_product;
+    "test_heathrow_to_london" >:: test_heathrow_to_london
   ]
 
 let () =
