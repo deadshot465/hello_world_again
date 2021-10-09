@@ -1,7 +1,10 @@
 (ns hello-world.core-test
   (:require [clojure.test :refer :all]
             [hello-world.core :refer :all]
-            [hello-world.extra.rpn :as rpn :only rpn]))
+            [hello-world.extra.rpn :as rpn :only rpn]
+            [hello-world.extra.road :as road :only run]))
+
+(def expected-road (list [:b 10] [:x 30] [:a 5] [:x 20] [:b 2] [:b 8]))
 
 (deftest addition
   (testing "Test Plus."
@@ -58,5 +61,9 @@
 (deftest product
   (testing "Test Product"
     (is (= 1000.0 (rpn/rpn "10 10 20 0.5 prod")))))
+
+(deftest heathrow-to-london
+  (testing "Test Heathrow to London"
+    (is (= expected-road (road/run)))))
 
 (run-tests)
