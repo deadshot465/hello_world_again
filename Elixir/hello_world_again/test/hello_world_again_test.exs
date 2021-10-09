@@ -53,4 +53,11 @@ defmodule HelloWorldAgainTest do
   test "test product" do
     assert 1000 == Rpn.rpn("10 10 20 0.5 prod")
   end
+
+  test "test heathrow to london" do
+    expected_road = [
+      {:b, 10}, {:x, 30}, {:a, 5}, {:x, 20}, {:b, 2}, {:b, 8}
+    ]
+    assert expected_road == Road.run()
+  end
 end
