@@ -4,10 +4,9 @@
 (defrecord Route [destination path]
   Comparable
   (compareTo [_ other]
-    (cond
-      (> destination (:destination other)) -1
-      (< destination (:destination other)) 1
-      :else 0)))
+    (let [comparedValue (* -1 (compare destination (:destination other)))]
+      (if (not (= comparedValue 0)) comparedValue
+                                    (compare path (:path other))))))
 
 (defrecord RoutingResult [a b])
 
