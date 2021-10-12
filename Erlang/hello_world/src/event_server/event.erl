@@ -39,7 +39,7 @@ start_link(EventName, Delay) ->
     spawn_link(?MODULE, init, [self(), EventName, Delay]).
 
 init(Server, EventName, DateTime) ->
-    loop(#state{ server = Server, name = EventName, to_go = normalize(DateTime) }).
+    loop(#state{ server = Server, name = EventName, to_go = time_to_go(DateTime) }).
 
 time_to_go(TimeOut = {{_, _, _}, {_, _, _}}) ->
     Now = calendar:local_time(),
