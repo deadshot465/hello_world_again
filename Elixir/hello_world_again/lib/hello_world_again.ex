@@ -1,15 +1,17 @@
 defmodule HelloWorldApplication do
   use Application
   def start(_type, _args) do
-    children = [
-      %{
-        id: HelloWorldAgain,
-        start: {HelloWorldAgain, :start_link, []},
-        shutdown: :brutal_kill,
-        restart: :temporary
-      }
-    ]
-    Supervisor.start_link(children, strategy: :one_for_one)
+    pid = EccLibrary.start_link()
+    {:ok, pid}
+    # children = [
+    #   %{
+    #     id: HelloWorldAgain,
+    #     start: {HelloWorldAgain, :start_link, []},
+    #     shutdown: :brutal_kill,
+    #     restart: :temporary
+    #   }
+    # ]
+    # Supervisor.start_link(children, strategy: :one_for_one)
   end
 end
 
@@ -28,16 +30,7 @@ defmodule HelloWorldAgain do
     &K08.execute/1
   ]
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> HelloWorldAgain.hello()
-      :world
-
-  """
-  def start_link do
+  def run do
     IO.puts("実行したいプログラムを選択してください。")
 
     Enum.with_index(@executables)
@@ -57,7 +50,6 @@ defmodule HelloWorldAgain do
     |> String.to_integer()
 
     Enum.at(@executables, choice - 1).(choice_2)
-
   end
 
   defp show_selections(chapter) do
