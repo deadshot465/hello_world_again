@@ -10,13 +10,12 @@ defmodule K06 do
     end
   end
 
-  @spec get_ages :: [integer]
-  def get_ages do
-    input_age(0, 5, [])
+  @spec get_ages(non_neg_integer) :: [integer]
+  def get_ages(n) do
+    input_age(0, n, [])
   end
-
   def question_1 do
-    ages = get_ages()
+    ages = get_ages(5)
     count = Enum.count(ages)
     total_ages = List.foldl(ages, 0, fn (elem, acc) -> elem + acc end)
     IO.puts("#{count}人の平均年齢は#{total_ages / count}です。")

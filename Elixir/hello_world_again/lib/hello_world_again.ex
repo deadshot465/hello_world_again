@@ -27,7 +27,8 @@ defmodule HelloWorldAgain do
     &K05.execute/1,
     &K06.execute/1,
     &K07.execute/1,
-    &K08.execute/1
+    &K08.execute/1,
+    &K09.execute/1
   ]
 
   def run do
@@ -61,6 +62,9 @@ defmodule HelloWorldAgain do
         IO.puts("\t#{x}) K#{chapter}_#{x}")
       end
     end)
+    if chapter == 9 do
+      IO.puts("\t5) K0#{chapter}_5")
+    end
     chapter
   end
 end
