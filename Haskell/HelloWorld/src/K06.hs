@@ -1,4 +1,4 @@
-module K06 (K06(..)) where
+module K06 (K06(..), getAges) where
 
 import Prelude
 import Question (Question(..))
@@ -11,8 +11,8 @@ import Data.Text (pack, unpack, intercalate)
 
 data K06 = K06
 
-getAges :: p -> IO [Int]
-getAges _ = inputAge 0 5 []
+getAges :: (Eq t, Num t) => t -> IO [Int]
+getAges n = inputAge 0 n []
   where
     inputAge _ 0 acc = pure acc
     inputAge no amount acc = do
@@ -71,7 +71,7 @@ listWithIndex i x = show (i + 1) <> "\t|\t" <> ((pack <$> (show <$> x)) & interc
 
 instance Question K06 where
   question1 _ = do
-    ages <- getAges ()
+    ages <- getAges 5
     let count = length ages
     let totalAges = sum ages
     let count' = (fromInteger $ toInteger count :: Float)
