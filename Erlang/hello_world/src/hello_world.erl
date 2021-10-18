@@ -3,7 +3,7 @@
 -export([main/0]).
 
 main() ->
-    Modules = [k01, k02, k03, k04, k05, k06, k07, k08],
+    Modules = [k01, k02, k03, k04, k05, k06, k07, k08, k09],
     Ordinals = lists:seq(1, length(Modules)),
     Zipped = lists:zip(Ordinals, Modules),
     io:format("実行したいプログラムを選択してください。~n"),
@@ -26,4 +26,7 @@ show_selections(Chapter) ->
                 true -> "K"
              end,
     Ordinals = [1, 2, 3, 4],
-    lists:foreach(fun(X) -> io:format("\t~B) ~s~B_~B", [X, Prefix, Chapter, X]) end, Ordinals).
+    lists:foreach(fun(X) -> io:format("\t~B) ~s~B_~B", [X, Prefix, Chapter, X]) end, Ordinals),
+    if Chapter =:= 9 -> io:format("\t5) ~s~B_5", [Prefix, Chapter]);
+       true -> io:format("")
+    end.

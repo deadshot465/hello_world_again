@@ -1,16 +1,16 @@
 -module(k06).
 
--export([execute/1]).
+-export([execute/1, get_ages/1]).
 
 -spec question_1() -> 'ok'.
 question_1() ->
-    Ages = get_ages(),
+    Ages = get_ages(5),
     Count = length(Ages),
     AverageAge = lists:sum(Ages) / Count,
     io:format("~B人の平均年齢は~fです。", [Count, AverageAge]).
 
--spec get_ages() -> [integer()].
-get_ages() -> input_age(0, 5, []).
+-spec get_ages(integer()) -> [integer()].
+get_ages(N) -> input_age(0, N, []).
 
 -spec input_age(non_neg_integer(), integer(), [integer()]) -> [integer()].
 input_age(_, 0, Acc) -> Acc;
