@@ -25,5 +25,5 @@ module HelloWorld =
         let choice = Console.ReadLine() |> Int32.Parse
         showSelections choice
         let choice2 = Console.ReadLine() |> Int32.Parse
-        if choice = 9 && choice2 = 5 then K09().Question5 () else  executables.[choice - 1].Execute choice2
+        if choice = 9 && choice2 = 5 then K09().Question5 () else executables.[choice - 1].Execute choice2
         0 // return an integer exit code
