@@ -2,9 +2,9 @@
   (:require [hello-world.shared.question :as question]
             [hello-world.assignments.question-2 :as question-2 :only Golem]))
 
-(defn get-ages []
+(defn get-ages [n]
   (loop [no 0
-         amount 5
+         amount n
          acc '()]
     (if (= amount 0) acc
                      (do (printf "%d人目の年齢を入力して下さい：" (+ no 1))
