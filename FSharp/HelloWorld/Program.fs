@@ -6,13 +6,14 @@ open HelloWorld.Lib
 module HelloWorld =
     let executables = [|Executable(K01()); Executable(K02()); Executable(K03())
                         Executable(K04()); Executable(K05()); Executable(K06())
-                        Executable(K07()); Executable(K08())|]
+                        Executable(K07()); Executable(K08()); Executable(K09())|]
     
     let showSelections chapter =
+        let assignments = if chapter = 9 then [1; 2; 3; 4; 5] else [1; 2; 3; 4]
         if chapter < 10 then
-            [1; 2; 3; 4] |> List.iter (fun x -> printfn $"\t{x}) K0{chapter}_{x}")
+            assignments |> List.iter (fun x -> printfn $"\t{x}) K0{chapter}_{x}")
         else
-            [1; 2; 3; 4] |> List.iter (fun x -> printfn $"\t{x}) K{chapter}_{x}")
+            assignments |> List.iter (fun x -> printfn $"\t{x}) K{chapter}_{x}")
     
     [<EntryPoint>]
     let main argv =
@@ -24,5 +25,5 @@ module HelloWorld =
         let choice = Console.ReadLine() |> Int32.Parse
         showSelections choice
         let choice2 = Console.ReadLine() |> Int32.Parse
-        executables.[choice - 1].Execute choice2
+        if choice = 9 && choice2 = 5 then K09().Question5 () else  executables.[choice - 1].Execute choice2
         0 // return an integer exit code

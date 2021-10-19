@@ -5,7 +5,7 @@ open System
 type K06() =
     interface IQuestion with
         member this.Question1() =
-            let ages = this.GetAges()
+            let ages = this.GetAges 5
             let count = List.length ages
             let totalAges = List.sum ages
             printfn $"{count}人の平均年齢は{float32(totalAges) / float32(count)}"
@@ -52,14 +52,14 @@ type K06() =
                 sprintf $"{i + 1}\t|\t{innerList}") |> String.concat "\n"
             printfn $"{result}"
         
-    member private this.GetAges () =
+    member public this.GetAges n =
         let rec inputAge no amount acc =
             match amount with
             | 0 -> acc
             | _ ->
                 printf $"{no + 1}人目の年齢を入力して下さい："
                 inputAge (no + 1) (amount - 1) ((Console.ReadLine() |> Int32.Parse) :: acc)
-        inputAge 0 5 []
+        inputAge 0 n []
         
     member private this.MakeUpperPyramid levels =
         let rec make current levels' acc =

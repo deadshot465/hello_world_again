@@ -19,6 +19,7 @@
         <Compile Include="Lib\Executable.fs" />
         <Compile Include="Lib\Extra\Rpn.fs" />
         <Compile Include="Lib\Extra\Road.fs" />
+        <Compile Include="Lib\K09.fs" />
         <Compile Include="Program.fs" />
         <None Include="road.txt">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
