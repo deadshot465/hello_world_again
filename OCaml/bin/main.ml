@@ -8,18 +8,21 @@ module K05 = Executable(Lib.K05.K05)
 module K06 = Executable(Lib.K06.K06)
 module K07 = Executable(Lib.K07.K07)
 module K08 = Executable(Lib.K08.K08)
+module K09 = Executable(Lib.K09.K09)
 
 let executables = [
   K01.execute; K02.execute; K03.execute; K04.execute;
-  K05.execute; K06.execute; K07.execute; K08.execute
+  K05.execute; K06.execute; K07.execute; K08.execute;
+  K09.execute
 ]
 
 let show_selections chapter =
+  let assignments = if chapter = 9 then [1; 2; 3; 4; 5] else [1; 2; 3; 4] in
   if chapter < 10 then
-    [1; 2; 3; 4]
+    assignments
     |> List.iter (fun x -> print_endline ("\t" ^ (string_of_int x) ^ ") K0" ^ (string_of_int chapter) ^ "_" ^ (string_of_int x)))
   else
-    [1; 2; 3; 4]
+    assignments
     |> List.iter (fun x -> print_endline ("\t" ^ (string_of_int x) ^ ") K" ^ (string_of_int chapter) ^ "_" ^ (string_of_int x)))
 
 let () =
@@ -34,4 +37,4 @@ let () =
     let choice_2 = read_int() in
     match List.nth_opt executables (choice - 1) with
     None -> print_endline "選択された課題はございません。"
-    | Some(exec) -> exec choice_2
+    | Some(exec) -> if choice = 9 && choice_2 = 5 then Lib.K09.question_5 () else exec choice_2

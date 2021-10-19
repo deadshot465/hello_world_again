@@ -1,17 +1,17 @@
 open Question
 
 module K06 : Question = struct
-  let get_ages () =
+  let get_ages n =
     let rec input_age no amount acc =
       match amount with
       0 -> acc
       | _ ->
         Printf.printf "%d人目の年齢を入力して下さい：" (no + 1);
         input_age (no + 1) (amount - 1) (read_int() :: acc)
-    in input_age 0 5 []
+    in input_age 0 n []
 
   let question_1 () =
-    let ages = get_ages () in
+    let ages = get_ages 5 in
     let count = List.length ages in
     let total_ages = List.fold_left (fun acc elem -> acc + elem) 0 ages in
     Printf.printf "%d人の平均年齢は%fです。" count ((float_of_int total_ages) /. (float_of_int count))
