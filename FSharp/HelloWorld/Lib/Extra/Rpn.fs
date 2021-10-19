@@ -2,10 +2,10 @@ module HelloWorld.Lib.Extra.Rpn
 
 open System
 
-let private Read s =
+let private read s =
     Double.Parse s
     
-let private InnerRpn stack op =
+let private innerRpn stack op =
     match (op, stack) with
     | "+", n1 :: n2 :: tl -> n2 + n1 :: tl
     | "-", n1 :: n2 :: tl -> n2 - n1 :: tl
@@ -16,11 +16,11 @@ let private InnerRpn stack op =
     | "log10", n1 :: tl -> Math.Log10(n1) :: tl
     | "sum", l -> [List.sum l]
     | "prod", l -> [List.fold (*) 1.0 l]
-    | x, l -> Read x :: l
+    | x, l -> read x :: l
 
 let Rpn (s: string) =
     try
-        let res :: tl = List.fold InnerRpn [] (List.ofArray (s.Split(" ")))
+        let res :: tl = List.fold innerRpn [] (List.ofArray (s.Split(" ")))
         if (tl <> []) then
             failwith "Incorrect input"
         else

@@ -8,7 +8,7 @@ open NUnit.Framework
 let Setup () =
     ()
     
-let private ExpectedRoad = [
+let private expectedRoad = [
     ('b',10); ('x',30); ('a',5); ('x',20); ('b',2); ('b',8)
 ]
 
@@ -67,4 +67,4 @@ let TestProduct () =
     
 [<Test>]
 let TestHeathrowToLondon () =
-    Assert.AreEqual(ExpectedRoad, Road.Run)
+    Assert.AreEqual(expectedRoad, Road.Run)
