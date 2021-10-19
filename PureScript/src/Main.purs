@@ -16,6 +16,8 @@ import K05 (K05(..))
 import K06 (K06(..))
 import K07 (K07(..))
 import K08 (K08(..))
+import K09 (K09(..))
+import K09 as K09
 import Question (execute) as Question
 import Readline (getNumber)
 
@@ -43,6 +45,9 @@ k07 = K07
 k08 :: K08
 k08 = K08
 
+k09 :: K09
+k09 = K09
+
 execute :: Int -> Int -> Effect Unit
 execute 1 = Question.execute k01
 execute 2 = Question.execute k02
@@ -52,15 +57,18 @@ execute 5 = Question.execute k05
 execute 6 = Question.execute k06
 execute 7 = Question.execute k07
 execute 8 = Question.execute k08
+execute 9 = Question.execute k09
 execute _ = const $ log "Error"
 
 showSelections :: ∀ f. Applicative f => MonadEffect f => Int -> f (Array Unit)
-showSelections chapter = traverse (\x -> log $ "\t" <> show x <> ") " <> (if biggerThanTen then "K" else "K0") <> show chapter <> "_" <> show x) [1, 2, 3, 4]
+showSelections chapter = traverse (\x -> log $ "\t" <> show x <> ") " <> (if biggerThanTen then "K" else "K0") <> show chapter <> "_" <> show x) numbers
   where
     biggerThanTen = chapter > 10
+    numbers | chapter == 9 = [1, 2, 3, 4, 5]
+            | otherwise = [1, 2, 3, 4]
 
 assignments :: Array Int
-assignments = [1, 2, 3, 4, 5, 6, 7, 8]
+assignments = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 showAssignments :: ∀ f. Applicative f => MonadEffect f => f (Array Unit)
 showAssignments = traverse (\x -> log (show x <> ") " <> (if biggerThanTen x then "K" else "K0") <> show x <> "\t\t")) assignments
@@ -74,4 +82,4 @@ main = launchAff_ do
   choice <- getNumber "実行したいプログラムを選択してください。" 0 fromString
   _ <- showSelections choice
   choice2 <- getNumber "" 0 fromString
-  liftEffect $ execute choice choice2
+  if choice == 9 && choice2 == 5 then liftEffect $ K09.question5 k09 else liftEffect $ execute choice choice2

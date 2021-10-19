@@ -1,4 +1,4 @@
-module K06 (K06(..)) where
+module K06 (K06(..), getAges) where
   
 import Prelude
 
@@ -15,8 +15,8 @@ import Readline (_writeToStdout, closeAndExit, getNumber)
 
 data K06 = K06
 
-getAges :: ∀ a. a -> Aff (List Int)
-getAges _ = inputAge 0 5 Nil
+getAges :: Int -> Aff (List Int)
+getAges n = inputAge 0 n Nil
   where
     inputAge _ 0 acc = pure acc
     inputAge no amount acc = do
@@ -79,7 +79,7 @@ listWithIndex i x = show (i + 1) <> "\t|\t" <> ((show <$> x) # intercalate "\t")
 
 instance Question K06 where
   question1 _ = launchAff_ do
-    ages <- getAges unit
+    ages <- getAges 5
     let count = length ages
     let totalAges = sum ages
     let count' = toNumber count
