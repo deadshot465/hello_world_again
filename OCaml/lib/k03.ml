@@ -15,7 +15,7 @@ module K03 : Question = struct
     let standard = height *. height *. 22.0 in
     Printf.printf "あなたの標準体重は%fです。\n" standard;
     match weight with
-    x when x > standard && (x -. standard) /. standard *. 100.0 > 14.0 ->
+      x when x > standard && (x -. standard) /. standard *. 100.0 > 14.0 ->
       print_endline "太り気味です。"
     | x when x < standard && (x -. standard) /. standard *. 100.0 < -14.0 ->
       print_endline "痩せ気味です。"
@@ -38,9 +38,9 @@ module K03 : Question = struct
     let guess = read_int() in
     Printf.printf "決められた数値は%dです。" random_number;
     print_endline (match guess with
-    x when x < 0 || x > 99 -> "反則です！"
-    | x when x > random_number && x - random_number <= 10 -> "大正解です！"
-    | x when x < random_number && random_number - x <= 10 -> "惜しい！"
-    | x when x == random_number -> "お見事！"
-    | _ -> if guess > random_number then "正解です。" else "不正解です。")
+          x when x < 0 || x > 99 -> "反則です！"
+        | x when x > random_number && x - random_number <= 10 -> "大正解です！"
+        | x when x < random_number && random_number - x <= 10 -> "惜しい！"
+        | x when x == random_number -> "お見事！"
+        | _ -> if guess > random_number then "正解です。" else "不正解です。")
 end

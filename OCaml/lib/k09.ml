@@ -4,7 +4,7 @@ module K09 : Question = struct
   let get_ages n =
     let rec input_age no amount acc =
       match amount with
-      0 -> acc
+        0 -> acc
       | _ ->
         Printf.printf "%d人目の年齢を入力して下さい：" (no + 1);
         input_age (no + 1) (amount - 1) (read_int() :: acc)
@@ -32,9 +32,9 @@ module K09 : Question = struct
     print_endline "\t|\t科目A\t科目B\t科目C\t科目D";
     print_endline (String.make 65 '-');
     List.iteri (fun i student ->
-      Printf.printf "学生%d\t|\t" i;
-      List.iter (fun score -> Printf.printf "%d\t" score) student;
-      print_newline ()) student_scores
+        Printf.printf "学生%d\t|\t" i;
+        List.iter (fun score -> Printf.printf "%d\t" score) student;
+        print_newline ()) student_scores
 
   let transform xs acc =
     List.fold_left (fun acc' student -> List.mapi (fun i score -> score + (List.nth student i)) acc') acc xs
@@ -46,16 +46,16 @@ module K09 : Question = struct
     print_endline "\t|\t科目A\t科目B\t科目C\t科目D\t|\t合計点";
     print_endline (String.make 65 '-');
     List.iteri (fun i student ->
-      Printf.printf "学生%d\t|\t" i;
-      let last_score = List.nth student ((List.length student) - 1) in
-      List.iter (fun score -> if score = last_score then Printf.printf "|\t%d\t" score
-      else Printf.printf "%d\t" score) student;
-      print_newline ()) with_sum;
+        Printf.printf "学生%d\t|\t" i;
+        let last_score = List.nth student ((List.length student) - 1) in
+        List.iter (fun score -> if score = last_score then Printf.printf "|\t%d\t" score
+                    else Printf.printf "%d\t" score) student;
+        print_newline ()) with_sum;
     let average = transform with_sum [0; 0; 0; 0; 0] |> List.map float_of_int in
     let last_average = List.nth average ((List.length average) - 1) in
     print_string "平均点\t|\t";
     List.iter (fun score -> if score = last_average then Printf.printf "|\t%f\t" (score /. 3.0)
-    else Printf.printf "%f\t" (score /. 3.0)) average
+                else Printf.printf "%f\t" (score /. 3.0)) average
 end
 
 let rec input_numbers n choice acc =

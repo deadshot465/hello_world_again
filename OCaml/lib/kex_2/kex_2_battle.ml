@@ -48,7 +48,7 @@ module Kex_2_Battle = struct
       print_endline "攻撃を外した！";
       enemy
     end
-  
+
   let damage_player (enemy: Enemy.enemy) (player: Player.player): Player.player =
     let hit_or_miss = check_hit_or_miss enemy.enemy_hit in
     if hit_or_miss then
@@ -66,12 +66,12 @@ module Kex_2_Battle = struct
   let rec battle_loop (enemy: Enemy.enemy) player =
     if enemy.enemy_hp <= 0 then
       (Printf.printf "%sLv.%dを倒した！\n" enemy.enemy_name (enemy.enemy_level + 1);
-      Continue player)
+       Continue player)
     else begin
       match player.player_hp with
       | x when x <= 0 ->
         (Printf.printf "あなたは%sに負けました！\n" enemy.enemy_name;
-        End "ゲームオーバー！")
+         End "ゲームオーバー！")
       | _ ->
         Printf.printf "%s 残りHP：%d\n" enemy.enemy_name enemy.enemy_hp;
         print_string "武器を選択してください（１．攻撃　２．特技　３．魔法）＞";
@@ -82,7 +82,7 @@ module Kex_2_Battle = struct
         let new_player = damage_player enemy player in
         if new_player.player_hp > 0 then
           (Printf.printf "プレイヤー残りHP：%d\n" new_player.player_hp;
-          battle_loop new_enemy new_player)
+           battle_loop new_enemy new_player)
         else begin
           battle_loop new_enemy new_player
         end
@@ -98,23 +98,23 @@ module Kex_2_Battle = struct
       | 0 -> Printf.sprintf "リ〇ミト！\n戦闘回数：%d回　残りHP：%d" kills player'.player_hp
       | _ when player'.player_hp <= 0 -> inner_loop player' kills 0
       | _ -> (
-        Printf.printf "\n現HP：%d\n" player'.player_hp;
-        print_string "奥に進みますか？（１：奥に進む　０．帰る）＞";
-        let choice' = read_int () in
-        match choice' with
-        | 0 -> inner_loop player' kills choice'
-        | _ -> (
-          let ordinal = Random.int 3 in
-          let enemy = Enemy.make_enemy ordinal in
-          let result = engage_battle (extract_enemy_data enemy) player' in
-          match result with
-          | End s -> (
-            print_endline s;
-            inner_loop { player_hp = 0; player_defense = player'.player_defense } kills 0
-          )
-          | Continue p -> inner_loop p (kills + 1) 1
+          Printf.printf "\n現HP：%d\n" player'.player_hp;
+          print_string "奥に進みますか？（１：奥に進む　０．帰る）＞";
+          let choice' = read_int () in
+          match choice' with
+          | 0 -> inner_loop player' kills choice'
+          | _ -> (
+              let ordinal = Random.int 3 in
+              let enemy = Enemy.make_enemy ordinal in
+              let result = engage_battle (extract_enemy_data enemy) player' in
+              match result with
+              | End s -> (
+                  print_endline s;
+                  inner_loop { player_hp = 0; player_defense = player'.player_defense } kills 0
+                )
+              | Continue p -> inner_loop p (kills + 1) 1
+            )
         )
-      )
     in
     inner_loop player 0 1
 end

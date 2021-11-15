@@ -30,8 +30,8 @@ module Road = struct
     let initial_result = { a = { destination = 0; path = [] }; b = { destination = 0; path = [] } } in
     let routing_result = List.fold_left shortest_steps initial_result values in
     let route = if (List.hd routing_result.a.path <> ('x', 0)) then routing_result.a
-                else if (List.hd routing_result.b.path <> ('x', 0)) then routing_result.b
-                else { destination = 0; path = [] } in
+      else if (List.hd routing_result.b.path <> ('x', 0)) then routing_result.b
+      else { destination = 0; path = [] } in
     List.rev route.path
 
   let run =

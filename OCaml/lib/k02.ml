@@ -37,9 +37,9 @@ module K02 : Question = struct
     print_string "今回の攻撃の値を入力してください＞";
     let damage = read_int() in
     let final_damage = if damage - golem.defense > 0 then
-      damage - golem.defense
-    else
-      0
+        damage - golem.defense
+      else
+        0
     in
     Printf.printf "ダメージは%dです。" final_damage;
     let golem = { hp = golem.hp - final_damage; defense = 80; attack = 50 } in

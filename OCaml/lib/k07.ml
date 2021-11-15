@@ -45,11 +45,11 @@ module K07 : Question = struct
   let question_3 () =
     print_string "年齢を入力して下さい。＞";
     print_endline (match get_type (read_int()) with
-                    | Error -> "不適切な値が入力されました。"
-                    | Free -> "入場料金無料です。"
-                    | Half -> "子供料金で半額です。"
-                    | TenPercentOff -> "シニア割引で１割引きです。"
-                    | _ -> "通常料金です。")
+        | Error -> "不適切な値が入力されました。"
+        | Free -> "入場料金無料です。"
+        | Half -> "子供料金で半額です。"
+        | TenPercentOff -> "シニア割引で１割引きです。"
+        | _ -> "通常料金です。")
 
   let question_4 () = 
     ()
