@@ -31,10 +31,15 @@ let () =
     |> List.iteri (fun i _ -> if i < 10 then
       print_string ((string_of_int (i + 1)) ^ ") K0" ^ (string_of_int (i + 1)) ^ "\t\t") else
         print_string ((string_of_int (i + 1)) ^ ") K" ^ (string_of_int (i + 1)) ^ "\t\t"));
+    print_endline "101) Kex_2";
     print_newline();
     let choice = read_int() in
-    show_selections choice;
-    let choice_2 = read_int() in
-    match List.nth_opt executables (choice - 1) with
-    None -> print_endline "選択された課題はございません。"
-    | Some(exec) -> if choice = 9 && choice_2 = 5 then Lib.K09.question_5 () else exec choice_2
+    match choice with
+    | 101 -> Kex_2.Kex_2.run ()
+    | _ -> (
+      show_selections choice;
+      let choice_2 = read_int() in
+      match List.nth_opt executables (choice - 1) with
+      None -> print_endline "選択された課題はございません。"
+      | Some(exec) -> if choice = 9 && choice_2 = 5 then Lib.K09.question_5 () else exec choice_2
+    )

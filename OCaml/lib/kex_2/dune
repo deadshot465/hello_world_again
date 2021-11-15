@@ -1,0 +1,3 @@
+(library
+ (name kex_2)
+ (libraries shared))
