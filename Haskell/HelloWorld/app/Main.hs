@@ -15,6 +15,7 @@ import K06 (K06(..))
 import K07 (K07(..))
 import K08 (K08(..))
 import qualified K09 (K09(..), question5)
+import qualified Kex2.Kex2 (run)
 
 k01 :: K01
 k01 = K01
@@ -70,8 +71,11 @@ main :: IO ()
 main = do
   putStrLn "実行したいプログラムを選択してください。"
   _ <- showAssignments
-  putStrLn ""
+  putStrLn "101) Kex_2\n"
   choice <- getLine >>= \s -> pure (read s :: Int)
-  _ <- showSelections choice
-  choice2 <- getLine >>= \s -> pure (read s :: Int)
-  if choice == 9 && choice2 == 5 then K09.question5 k09 else execute' choice choice2
+  case choice of
+    101 -> Kex2.Kex2.run
+    _ -> do
+      _ <- showSelections choice
+      choice2 <- getLine >>= \s -> pure (read s :: Int)
+      if choice == 9 && choice2 == 5 then K09.question5 k09 else execute' choice choice2

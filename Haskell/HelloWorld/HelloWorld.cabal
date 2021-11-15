@@ -37,8 +37,13 @@ library
       K08
       K08_Adventure
       K09
+      Kex2.Kex2
+      Kex2.Kex2Battle
       Lib
       Question
+      Shared.Constants
+      Shared.Enemy
+      Shared.Player
       Utility
   other-modules:
       Paths_HelloWorld

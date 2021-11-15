@@ -8,3 +8,6 @@ getInt = getLine >>= \s -> pure (read s :: Int)
 
 getRandomInt :: Int -> IO Int
 getRandomInt upper = getStdRandom (randomR (0, upper)) :: IO Int
+
+getRandomInteger :: Integer -> IO Integer
+getRandomInteger upper = getStdRandom (randomR (0, upper)) :: IO Integer
