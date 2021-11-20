@@ -15,9 +15,9 @@ type ProgressResult = Continue of Player | End of string
 let rec private SelectAttack choice =
     let rng = Random()
     match choice with
-    | 1 -> Attack (rng.Next(0, 41), Constants.AttackHit)
-    | 2 -> Skill (rng.Next(0, 101), Constants.SkillHit)
-    | 3 -> Magic (rng.Next(0, 181), Constants.MagicHit)
+    | 1 -> Attack (rng.Next(0, 41) + 60, Constants.AttackHit)
+    | 2 -> Skill (rng.Next(0, 101) + 30, Constants.SkillHit)
+    | 3 -> Magic (rng.Next(0, 181) + 20, Constants.MagicHit)
     | _ -> SelectAttack 1
     
 let private CheckHitOrMiss hit = Random().Next(0, 101) < hit
@@ -57,7 +57,7 @@ let private DamagePlayer enemy (player: Player) =
         
 let rec private BattleLoop enemy player =
     if enemy.Hp <= 0 then
-        printfn $"{enemy.Name}Lv.${enemy.Level + 1}を倒した！"
+        printfn $"{enemy.Name}Lv.{enemy.Level + 1}を倒した！"
         Continue player
     else
         match player.Hp with
