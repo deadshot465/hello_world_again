@@ -2,6 +2,7 @@
 
 open System
 open HelloWorld.Lib
+open HelloWorld.Lib.Kex2
 
 module HelloWorld =
     let executables = [|Executable(K01()); Executable(K02()); Executable(K03())
@@ -21,9 +22,13 @@ module HelloWorld =
         executables |> Array.iteri (fun i _ ->
             if i < 10 then printf $"{i + 1}) K0{i + 1}\t\t"
             else printf $"{i + 1}) K{i + 1}\t\t")
+        printfn "101) Kex2"
         printfn ""
         let choice = Console.ReadLine() |> Int32.Parse
-        showSelections choice
-        let choice2 = Console.ReadLine() |> Int32.Parse
-        if choice = 9 && choice2 = 5 then K09().Question5 () else executables.[choice - 1].Execute choice2
+        match choice with
+        | 101 -> Kex2.runKex2 ()
+        | _ ->
+            showSelections choice
+            let choice2 = Console.ReadLine() |> Int32.Parse
+            if choice = 9 && choice2 = 5 then K09().Question5 () else executables.[choice - 1].Execute choice2
         0 // return an integer exit code
