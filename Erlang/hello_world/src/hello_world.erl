@@ -13,12 +13,16 @@ main() ->
                  end,
         io:format("~B) ~s~B\t\t", [I, Prefix, I])
         end, Zipped),
+    io:format("101) Kex_2"),
     io:format("~n"),
     {ok, [Choice]} = io:fread("", "~d"),
-    show_selections(Choice),
-    {ok, [Choice2]} = io:fread("", "~d"),
-    Module = lists:nth(Choice, Modules),
-    apply(Module, execute, [Choice2]).
+    if Choice =:= 101 -> kex_2:run_kex2();
+       true ->
+        show_selections(Choice),
+        {ok, [Choice2]} = io:fread("", "~d"),
+        Module = lists:nth(Choice, Modules),
+        apply(Module, execute, [Choice2])
+    end.
 
 -spec show_selections(_) -> 'ok'.
 show_selections(Chapter) ->
