@@ -41,16 +41,22 @@ defmodule HelloWorldAgain do
       end
     end)
 
+    IO.puts("101) Kex_2")
+
     choice = IO.gets("")
     |> String.trim()
     |> String.to_integer()
-    |> show_selections()
 
-    choice_2 = IO.gets("")
-    |> String.trim()
-    |> String.to_integer()
-
-    Enum.at(@executables, choice - 1).(choice_2)
+    case choice do
+      101 ->
+        Kex_2.run_kex_2()
+      _ ->
+        choice = show_selections(choice)
+        choice_2 = IO.gets("")
+        |> String.trim()
+        |> String.to_integer()
+        Enum.at(@executables, choice - 1).(choice_2)
+    end
   end
 
   defp show_selections(chapter) do
