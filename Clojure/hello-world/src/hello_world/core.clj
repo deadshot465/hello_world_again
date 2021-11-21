@@ -8,7 +8,8 @@
             [hello-world.assignments.question-6 :refer :all]
             [hello-world.assignments.question-7 :refer :all]
             [hello-world.assignments.question-8 :refer :all]
-            [hello-world.assignments.question-9 :as question-9 :refer :all])
+            [hello-world.assignments.question-9 :as question-9 :refer :all]
+            [hello-world.assignments.kex-2.kex-2 :as kex-2 :refer :all])
   (:gen-class))
 
 (defn show-selections [chapter]
@@ -29,12 +30,15 @@
                  (str (+ index 1) ") " (if (< index 10) "K0" "K") (+ index 1) "\t\t")) executables)
        (clojure.string/join)
        (println))
+  (println "101) Kex_2")
   (newline)
   (let [choice (-> (read-line)
                    (Integer/parseInt))]
-    (show-selections choice)
-    (let [choice-2 (-> (read-line)
-                       (Integer/parseInt))]
-      (cond
-        (and (= choice 9) (= choice-2 5)) (question-9/question-5)
-        :else (execute (nth executables (- choice 1)) choice-2)))))
+    (case choice
+      101 (kex-2/run-kex-2)
+      (do (show-selections choice)
+          (let [choice-2 (-> (read-line)
+                             (Integer/parseInt))]
+            (cond
+              (and (= choice 9) (= choice-2 5)) (question-9/question-5)
+              :else (execute (nth executables (- choice 1)) choice-2)))))))
