@@ -1,4 +1,7 @@
-module Util where
+module Util
+  ( randomAff
+  )
+  where
 
 import Prelude
 

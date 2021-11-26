@@ -18,6 +18,7 @@ import K07 (K07(..))
 import K08 (K08(..))
 import K09 (K09(..))
 import K09 as K09
+import Kex2.Kex2 as Kex2
 import Question (execute) as Question
 import Readline (getNumber)
 
@@ -78,8 +79,11 @@ showAssignments = traverse (\x -> log (show x <> ") " <> (if biggerThanTen x the
 main :: Effect Unit
 main = launchAff_ do
   _ <- showAssignments
-  log ""
+  log "101) Kex2"
   choice <- getNumber "実行したいプログラムを選択してください。" 0 fromString
-  _ <- showSelections choice
-  choice2 <- getNumber "" 0 fromString
-  if choice == 9 && choice2 == 5 then liftEffect $ K09.question5 k09 else liftEffect $ execute choice choice2
+  case choice of
+    101 -> Kex2.run
+    _ -> do
+      _ <- showSelections choice
+      choice2 <- getNumber "" 0 fromString
+      if choice == 9 && choice2 == 5 then liftEffect $ K09.question5 k09 else liftEffect $ execute choice choice2
