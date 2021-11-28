@@ -1,0 +1,36 @@
+(defpackage :k01
+    (:use :cl)
+    (:export #:question-1 #:question-2 #:question-3 #:question-4))
+
+(in-package :k01)
+
+(defun question-1 () 
+    (print "Hello World!　ようこそCommon Lisp言語の世界へ！"))
+
+(defun question-2 ()
+    (print "Hello World!")
+    (print "ようこそ")
+    (print "Common Lisp言語の世界へ！"))
+
+(defun question-3 ()
+    (format t "整数：~a~%" 12345)
+    (format t "実数：~a~%" 123.456789)
+    (format t "文字：~a~%" #\A)
+    (format t "文字列：~a~%" "ABCdef"))
+
+(defun question-4 ()
+    (print "              ##")
+    (print "             #  #")
+    (print "             #  #")
+    (print "            #    #")
+    (print "           #      #")
+    (print "         ##        ##")
+    (print "       ##            ##")
+    (print "    ###                ###")
+    (print " ###       ##    ##       ###")
+    (print "##        #  #  #  #        ##")
+    (print "##         ##    ##         ##")
+    (print " ##     #            #     ##")
+    (print "  ###     ##########     ###")
+    (print "     ###              ###")
+    (print "        ##############"))

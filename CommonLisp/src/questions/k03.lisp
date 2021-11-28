@@ -1,0 +1,51 @@
+(defpackage :k03
+    (:use :cl)
+    (:export #:question-1 #:question-2 #:question-3 #:question-4))
+
+(in-package :k03)
+
+(defun question-1 () 
+    (print "年齢を入力してください。＞")
+    (finish-output)
+    (let ((age (parse-integer (read-line) :junk-allowed t)))
+        (print (if (< age 20) "未成年なので購入できません。" ""))))
+
+(defun question-2 ()
+    (print "身長を入力してください。＞")
+    (finish-output)
+    (let ((height (coerce (parse-integer (read-line) :junk-allowed t) 'single-float)))
+        (setf height (* height 0.01))
+        (print "体重を入力してください。＞")
+        (finish-output)
+        (let* ((weight (coerce (parse-integer (read-line) :junk-allowed t) 'single-float))
+            (standard (* height height 22.0))
+            (diff (* (/ (- weight standard) standard) 100.0)))
+            (format t "あなたの標準体重は~aです。~%" standard)
+            (print
+                (cond
+                    ((and (> weight standard) (> diff 14.0)) "太り気味です。")
+                    ((and (< weight standard) (< diff -14.0)) "痩せ気味です。")
+                    (t "普通ですね。"))))))
+
+(defun question-3 ()
+    (let ((random-number (random 100)))
+        (print "０から９９の範囲の数値が決定されました。")
+        (print "決められた数値を予想し、この数値よりも大きな値を入力してください＞")
+        (finish-output)
+        (let ((guess (parse-integer (read-line) :junk-allowed t)))
+            (format t "決められた数値は~aです。~%" random-number)
+            (print (if (> guess random-number) "正解です" "不正解です。")))))
+
+(defun question-4 ()
+    (let ((random-number (random 100)))
+        (print "０から９９の範囲の数値が決定されました。")
+        (print "決められた数値を予想し、この数値よりも大きな値を入力してください＞")
+        (finish-output)
+        (let ((guess (parse-integer (read-line) :junk-allowed t)))
+            (format t "決められた数値は~aです。~%" random-number)
+            (print (cond
+                ((or (< guess 0) (> guess 99)) "反則です！")
+                ((and (> guess random-number) (<= (- guess random-number) 10)) "大正解です！")
+                ((and (< guess random-number) (<= (- random-number guess) 10)) "惜しい！")
+                ((= guess random-number) "お見事！")
+                (t (if (> guess random-number) "正解です" "不正解です。")))))))
