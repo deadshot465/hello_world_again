@@ -16,6 +16,7 @@ import K07 (K07(..))
 import K08 (K08(..))
 import qualified K09 (K09(..), question5)
 import qualified Kex2.Kex2 (run)
+import qualified Musicians.BandSupervisor (startBand)
 
 k01 :: K01
 k01 = K01
@@ -71,10 +72,12 @@ main :: IO ()
 main = do
   putStrLn "実行したいプログラムを選択してください。"
   _ <- showAssignments
-  putStrLn "101) Kex_2\n"
+  putStrLn "101) Kex_2"
+  putStrLn "103) Band Supervisor"
   choice <- getLine >>= \s -> pure (read s :: Int)
   case choice of
     101 -> Kex2.Kex2.run
+    103 -> Musicians.BandSupervisor.startBand 5
     _ -> do
       _ <- showSelections choice
       choice2 <- getLine >>= \s -> pure (read s :: Int)

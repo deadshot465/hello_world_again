@@ -40,6 +40,8 @@ library
       Kex2.Kex2
       Kex2.Kex2Battle
       Lib
+      Musicians.BandSupervisor
+      Musicians.Musician
       Question
       Shared.Constants
       Shared.Enemy
