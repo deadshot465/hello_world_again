@@ -19,6 +19,7 @@ import K08 (K08(..))
 import K09 (K09(..))
 import K09 as K09
 import Kex2.Kex2 as Kex2
+import Musicians.BandSupervisor as BandSupervisor
 import Question (execute) as Question
 import Readline (getNumber)
 
@@ -80,9 +81,11 @@ main :: Effect Unit
 main = launchAff_ do
   _ <- showAssignments
   log "101) Kex2"
+  log "103) Band Supervisor"
   choice <- getNumber "実行したいプログラムを選択してください。" 0 fromString
   case choice of
     101 -> Kex2.run
+    103 -> BandSupervisor.startBand 3
     _ -> do
       _ <- showSelections choice
       choice2 <- getNumber "" 0 fromString
