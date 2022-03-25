@@ -3,6 +3,7 @@
 open System
 open HelloWorld.Lib
 open HelloWorld.Lib.Kex2
+open HelloWorld.Lib.Musicians
 
 module HelloWorld =
     let executables = [|Executable(K01()); Executable(K02()); Executable(K03())
@@ -23,10 +24,16 @@ module HelloWorld =
             if i < 10 then printf $"{i + 1}) K0{i + 1}\t\t"
             else printf $"{i + 1}) K{i + 1}\t\t")
         printfn "101) Kex2"
+        printfn "103) Band Supervisor"
         printfn ""
         let choice = Console.ReadLine() |> Int32.Parse
         match choice with
         | 101 -> Kex2.runKex2 ()
+        | 103 ->
+            let t = task {
+                do! BandSupervisor.startBand 3
+            }
+            t.Wait()
         | _ ->
             showSelections choice
             let choice2 = Console.ReadLine() |> Int32.Parse

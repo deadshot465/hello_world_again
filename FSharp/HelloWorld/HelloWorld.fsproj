@@ -25,6 +25,9 @@
         <Compile Include="Lib\Shared\Player.fs" />
         <Compile Include="Lib\Kex2\Kex2Battle.fs" />
         <Compile Include="Lib\Kex2\Kex2.fs" />
+        <Compile Include="Lib\Musicians\SkillLevel.fs" />
+        <Compile Include="Lib\Musicians\Musician.fs" />
+        <Compile Include="Lib\Musicians\BandSupervisor.fs" />
         <Compile Include="Program.fs" />
         <None Include="road.txt">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
