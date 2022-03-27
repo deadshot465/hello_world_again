@@ -1,0 +1,4 @@
+(library
+ (name musicians)
+ (libraries base lwt lwt.unix stdio)
+ (preprocess (pps ppx_let)))

@@ -32,10 +32,12 @@ let () =
                     print_string ((string_of_int (i + 1)) ^ ") K0" ^ (string_of_int (i + 1)) ^ "\t\t") else
                     print_string ((string_of_int (i + 1)) ^ ") K" ^ (string_of_int (i + 1)) ^ "\t\t"));
   print_endline "101) Kex_2";
+  print_endline "103) Band Supervisor";
   print_newline();
   let choice = read_int() in
   match choice with
   | 101 -> Kex_2.Kex_2.run ()
+  | 103 -> Musicians.Band_supervisor.BandSupervisor.start_band 3
   | _ -> (
       show_selections choice;
       let choice_2 = read_int() in
