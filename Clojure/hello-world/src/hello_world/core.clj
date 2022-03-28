@@ -9,7 +9,8 @@
             [hello-world.assignments.question-7 :refer :all]
             [hello-world.assignments.question-8 :refer :all]
             [hello-world.assignments.question-9 :as question-9 :refer :all]
-            [hello-world.assignments.kex-2.kex-2 :as kex-2 :refer :all])
+            [hello-world.assignments.kex-2.kex-2 :as kex-2 :refer :all]
+            [hello-world.assignments.musicians.band-supervisor :as band-supervisor])
   (:gen-class))
 
 (defn show-selections [chapter]
@@ -31,11 +32,13 @@
        (clojure.string/join)
        (println))
   (println "101) Kex_2")
+  (println "103) Band Supervisor")
   (newline)
   (let [choice (-> (read-line)
                    (Integer/parseInt))]
     (case choice
       101 (kex-2/run-kex-2)
+      103 (band-supervisor/start-band 3)
       (do (show-selections choice)
           (let [choice-2 (-> (read-line)
                              (Integer/parseInt))]
